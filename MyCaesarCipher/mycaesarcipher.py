@@ -1,4 +1,6 @@
-import itertools
+#!/usr/bin/env python3
+
+from random import Random
 
 
 class CaesarCipher:
@@ -13,26 +15,30 @@ class CaesarCipher:
     def __init__(self):
         pass
 
-    def encrypt(self, msg: str, key: int, consoleOutput: bool = True) -> str:
-        """Simple Caesar Cypher cryptography tool.
+    def encrypt(self,
+                msg: str,
+                key: int = None,
+                print_to_console: bool = True) -> str:
+        """Encrypt text using the Caesar-Cypher cryptography algorithm.
 
-        - Generates encrypted form of `msg: str` using the Caesar Cipher algorithm.
+        - Generates encrypted form of `msg: str` using the Caesar-Cipher algorithm.
+        - If no `key` is provided, a random key is generated.
 
-        Parameters:
-            :param msg: msg to be encoded.
-            :type msg: str
-            :param key: key to use when encoding the given message.
-            :type key: int
-            :param printInfo: whether to print information to the console/stdout, defaults to True
-            :type printInfo: bool, optional
-            :return: encrypted form of entered msg.
-            :rtype: str
+        :param msg: text to encrypt.
+        :type msg: str
+        :param key: numeric value used to encrypt the given text, defaults to None
+        :type key: int, optional
+        :param print_to_console: toggles print statements to stdout, defaults to True
+        :type print_to_console: bool, optional
+        :return: encrypted form of `msg: str`
+        :rtype: str
         """
 
         result: str = ''
+        if key is None:
+            key = Random().randint(1, 25)
 
         #@ Iterate through msg char by char.
-
         for character in msg:
             #@ Encrypt uppercase characters in msg
             if (character.isupper()):
@@ -48,20 +54,20 @@ class CaesarCipher:
                 result += character
         info: str = f'> Original Msg : {msg}\n> Shift-key : {key}\n> Encrypted Result: {result}\n'
 
-        if consoleOutput:
+        if print_to_console:
             print(info)
 
         return result
 
-    def decrypt(self, msg: str, consoleOutput: bool = True):
-        """Simple Caesar Cipher brute-force decryption tool.
+    def decrypt(self, msg: str, print_to_console: bool = True):
+        """Decrypt Caesar-Cipher encrypted messages using brute force.
 
-        - Decrypt plaintext `msg: str` encoded using the Caesar-Cipher algorithm.
+        ---
 
         :param msg: msg to decode.
         :type msg: str
-        :param consoleOutput: if true enable printing output to stdout, defaults to True.
-        :type consoleOutput: bool
+        :param print_to_console: if true enable printing output to stdout, defaults to True.
+        :type print_to_console: bool
         :return: all possible pairs of shift-keys and their decrypted results.
         :rtype: str
         """
@@ -82,6 +88,6 @@ class CaesarCipher:
                 else:
                     translated += character
 
-            if consoleOutput:
+            if print_to_console:
                 print(f'> Decrypted Shift-Key {key} : {translated}\n')
         return translated
