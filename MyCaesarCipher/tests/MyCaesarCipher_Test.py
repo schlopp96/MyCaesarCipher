@@ -3,20 +3,20 @@ from ..mycaesarcipher import CaesarCipher
 
 class CaesarCipherTesting:
 
-    def __init__(self, cipherClass=CaesarCipher()):
-        self.cipherClass = cipherClass
+    def __init__(self, test_class=CaesarCipher()):
+        self.test_class = test_class
 
     def test_encrypt(
         self,
         text,
         key,
         assertion,
-        printResults: bool = True,
+        output_results: bool = True,
     ):
-        assert self.cipherClass.encrypt(text, key, printResults) == assertion
+        assert self.test_class.encrypt(text, key, output_results) == assertion
 
     def test_decrypt(self, text, assertion, printResults: bool = False):
-        assert self.cipherClass.decrypt(text, printResults) == assertion
+        assert self.test_class.decrypt(text, printResults) == assertion
 
 
 testCC = CaesarCipherTesting()
