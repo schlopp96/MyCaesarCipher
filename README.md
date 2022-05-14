@@ -42,13 +42,15 @@ pip install MyCaesarCipher
 > **_Not recommended._**
 
 1. Before use, navigate to intended installation location, and create a new directory.
-2. Install all dependencies for this package within said directory using:
+
+2. Clone repository with the git client of your preference.
+
+3. Install all dependencies for this package within said directory using:
 
    ```python
    pip install -r requirements.txt
    ```
 
-3. Clone repository with the git client of your preference.
    - (Optional) move installation directory to **`"path/to/Python/Libs/site_packages/"`** to be able to import this package to a Python program like any other importable package.
 
 - Done!
@@ -66,17 +68,39 @@ pip install MyCaesarCipher
 ```python
 >>> from MyCaesarCipher import CaesarCipher
 
->>> encoder = CaesarCipher() # Create new class instance.
->>> code = 'Test Cipher'
->>> encoder.encrypt(text=code, key=200, consoleOutput=True)
+>>> cipher = CaesarCipher() # Create new class instance.
+>>> msg = 'Test Cipher'
+>>> encoder.encrypt(text=msg, key=200, print_to_console=True)
 
 > Original Msg : Test Cipher
 > Shift-Key : 200
-> Encrypted Result: LwklfUahzwj
+> Encrypted Result: Lwkl Uahzwj
 ```
 
-- Therefore the final encrypted result using a shift-key of 200 is:
+- Therefore the final encrypted result of "Test Cipher" using a shift-key of 200 is:
   - "**`LwklfUahzwj`**".
+
+- Note that the `key: int` parameter is _optional_, and if not provided, a random key between 1 and 25 will be generated:
+
+```python
+>>> cipher.encrypt('Test Cipher', print_to_console=True)
+
+> Original Msg : Test Cipher
+> Shift-key : 19
+> Encrypted Result: Mxlm Vbiaxk
+
+>>> cipher.encrypt('Test Cipher', print_to_console=True)
+
+> Original Msg : Test Cipher
+> Shift-key : 24
+> Encrypted Result: Rcqr Agnfcp
+
+>>> cipher.encrypt('Test Cipher', print_to_console=True)
+
+> Original Msg : Test Cipher
+> Shift-key : 4
+> Encrypted Result: Xiwx Gmtliv
+```
 
 ---
 
@@ -87,36 +111,61 @@ pip install MyCaesarCipher
 ```python
 >>> from MyCaesarCipher import CaesarCipher
 
->>> decoder = CaesarCipher() # Create new class instance.
->>> code = 'OznoiXdkczm'
->>> decoder.decrypt(text=code, consoleOutput=True)
+>>> cipher = CaesarCipher() # Create new class instance.
+>>> code = 'Ozno Xdkczm'
+>>> cipher.decrypt(text=code, print_to_console=True)
 
-> Decrypted Shift-Key 0 : OZNOIXDKCZM
-> Decrypted Shift-Key 1 : NYMNHWCJBYL
-> Decrypted Shift-Key 2 : MXLMGVBIAXK
-> Decrypted Shift-Key 3 : LWKLFUAHZWJ
-> Decrypted Shift-Key 4 : KVJKETZGYVI
-> Decrypted Shift-Key 5 : JUIJDSYFXUH
-> Decrypted Shift-Key 6 : ITHICRXEWTG
-> Decrypted Shift-Key 7 : HSGHBQWDVSF
-> Decrypted Shift-Key 8 : GRFGAPVCURE
-> Decrypted Shift-Key 9 : FQEFZOUBTQD
-> Decrypted Shift-Key 10 : EPDEYNTASPC
-> Decrypted Shift-Key 11 : DOCDXMSZROB
-> Decrypted Shift-Key 12 : CNBCWLRYQNA
-> Decrypted Shift-Key 13 : BMABVKQXPMZ
-> Decrypted Shift-Key 14 : ALZAUJPWOLY
-> Decrypted Shift-Key 15 : ZKYZTIOVNKX
-> Decrypted Shift-Key 16 : YJXYSHNUMJW
-> Decrypted Shift-Key 17 : XIWXRGMTLIV
-> Decrypted Shift-Key 18 : WHVWQFLSKHU
-> Decrypted Shift-Key 19 : VGUVPEKRJGT
-> Decrypted Shift-Key 20 : UFTUODJQIFS
-> Decrypted Shift-Key 21 : TESTNCIPHER # <- Correct Result
-> Decrypted Shift-Key 22 : SDRSMBHOGDQ
-> Decrypted Shift-Key 23 : RCQRLAGNFCP
-> Decrypted Shift-Key 24 : QBPQKZFMEBO
-> Decrypted Shift-Key 25 : PAOPJYELDAN
+> Decrypted Shift-Key 0 : Ozno Xdkczm
+
+> Decrypted Shift-Key 1 : Nymn Wcjbyl
+
+> Decrypted Shift-Key 2 : Mxlm Vbiaxk
+
+> Decrypted Shift-Key 3 : Lwkl Uahzwj
+
+> Decrypted Shift-Key 4 : Kvjk Tzgyvi
+
+> Decrypted Shift-Key 5 : Juij Syfxuh
+
+> Decrypted Shift-Key 6 : Ithi Rxewtg
+
+> Decrypted Shift-Key 7 : Hsgh Qwdvsf
+
+> Decrypted Shift-Key 8 : Grfg Pvcure
+
+> Decrypted Shift-Key 9 : Fqef Oubtqd
+
+> Decrypted Shift-Key 10 : Epde Ntaspc
+
+> Decrypted Shift-Key 11 : Docd Mszrob
+
+> Decrypted Shift-Key 12 : Cnbc Lryqna
+
+> Decrypted Shift-Key 13 : Bmab Kqxpmz
+
+> Decrypted Shift-Key 14 : Alza Jpwoly
+
+> Decrypted Shift-Key 15 : Zkyz Iovnkx
+
+> Decrypted Shift-Key 16 : Yjxy Hnumjw
+
+> Decrypted Shift-Key 17 : Xiwx Gmtliv
+
+> Decrypted Shift-Key 18 : Whvw Flskhu
+
+> Decrypted Shift-Key 19 : Vguv Ekrjgt
+
+> Decrypted Shift-Key 20 : Uftu Djqifs
+
+> Decrypted Shift-Key 21 : Test Cipher # <-- Correct Result
+
+> Decrypted Shift-Key 22 : Sdrs Bhogdq
+
+> Decrypted Shift-Key 23 : Rcqr Agnfcp
+
+> Decrypted Shift-Key 24 : Qbpq Zfmebo
+
+> Decrypted Shift-Key 25 : Paop Yeldan
 ```
 
 - The **`CaesarCipher.decrypt`** method will return all possible shifted-key variations of the given encrypted message.

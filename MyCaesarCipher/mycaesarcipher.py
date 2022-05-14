@@ -16,21 +16,21 @@ class CaesarCipher:
         pass
 
     def encrypt(self,
-                msg: str,
+                text: str,
                 key: int = None,
                 print_to_console: bool = True) -> str:
         """Encrypt text using the Caesar-Cypher cryptography algorithm.
 
-        - Generates encrypted form of `msg: str` using the Caesar-Cipher algorithm.
+        - Generates encrypted form of `text: str` using the Caesar-Cipher algorithm.
         - If no `key` is provided, a random key is generated.
 
-        :param msg: text to encrypt.
-        :type msg: str
+        :param text: text to encrypt.
+        :type text: str
         :param key: numeric value used to encrypt the given text, defaults to None
         :type key: int, optional
         :param print_to_console: toggles print statements to stdout, defaults to True
         :type print_to_console: bool, optional
-        :return: encrypted form of `msg: str`
+        :return: encrypted form of `text: str`
         :rtype: str
         """
 
@@ -38,34 +38,34 @@ class CaesarCipher:
         if key is None:
             key = Random().randint(1, 25)
 
-        #@ Iterate through msg char by char.
-        for character in msg:
-            #@ Encrypt uppercase characters in msg
+        #@ Iterate through text char by char.
+        for character in text:
+            #@ Encrypt uppercase characters in text
             if (character.isupper()):
                 result += chr((ord(character) + key - 65) % 26 + 65)
-            #@ Encrypt lowercase characters in msg
+            #@ Encrypt lowercase characters in text
             elif (character.islower()):
                 result += chr((ord(character) + key - 97) % 26 + 97)
-            #@ Encrypt numbers in msg
+            #@ Encrypt numbers in text
             elif (character.isdigit()):
                 result += str((int(character) + key) % 10)
             #@ Leave all non-alphanumeric characters unchanged.
             else:
                 result += character
-        info: str = f'> Original Msg : {msg}\n> Shift-key : {key}\n> Encrypted Result: {result}\n'
+        info: str = f'> Original Msg : {text}\n> Shift-key : {key}\n> Encrypted Result: {result}\n'
 
         if print_to_console:
             print(info)
 
         return result
 
-    def decrypt(self, msg: str, print_to_console: bool = True):
+    def decrypt(self, text: str, print_to_console: bool = True):
         """Decrypt Caesar-Cipher encrypted messages using brute force.
 
         ---
 
-        :param msg: msg to decode.
-        :type msg: str
+        :param text: text to decode.
+        :type text: str
         :param print_to_console: if true enable printing output to stdout, defaults to True.
         :type print_to_console: bool
         :return: all possible pairs of shift-keys and their decrypted results.
@@ -75,13 +75,13 @@ class CaesarCipher:
         #@ Outputs all possible shift-keys using the english alphabet.
         for key in range(26):
             translated = ''
-            for character in msg:
+            for character in text:
                 if (character.isupper()):
                     translated += chr((ord(character) - key - 65) % 26 + 65)
-                #@ Decrypt lowercase characters in msg
+                #@ Decrypt lowercase characters in text
                 elif (character.islower()):
                     translated += chr((ord(character) - key - 97) % 26 + 97)
-                #@ Decrypt numbers in msg
+                #@ Decrypt numbers in text
                 elif (character.isdigit()):
                     translated += str((int(character) - key) % 10)
                 #@ Leave all non-alphanumeric characters unchanged.
