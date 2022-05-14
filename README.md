@@ -43,7 +43,7 @@ pip install MyCaesarCipher
 
 1. Before use, navigate to intended installation location, and create a new directory.
 
-2. Clone repository with the git client of your preference.
+2. Either clone repository with the git client of your preference, or download and extract the source code `zip` archive from the ["releases"](https://github.com/schlopp96/MyCaesarCipher/releases) page, to the newly created directory.
 
 3. Install all dependencies for this package within said directory using:
 
@@ -51,7 +51,7 @@ pip install MyCaesarCipher
    pip install -r requirements.txt
    ```
 
-   - (Optional) move installation directory to **`"path/to/Python/Libs/site_packages/"`** to be able to import this package to a Python program like any other importable package.
+   - (Optional) move installation directory to **`"~Python/Libs/site_packages/"`** to be able to import this package to a Python program like any other importable package.
 
 - Done!
 
