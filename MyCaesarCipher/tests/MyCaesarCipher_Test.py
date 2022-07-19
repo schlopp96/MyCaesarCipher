@@ -1,10 +1,11 @@
+from typing import Any
 from ..mycaesarcipher import CaesarCipher
 
 
 class CaesarCipherTesting:
 
-    def __init__(self, test_class=CaesarCipher()):
-        self.test_class = test_class
+    def __init__(self, test_class=CaesarCipher()) -> None:
+        self.test_class: Any = test_class
 
     def test_encrypt(
         self,
@@ -12,39 +13,42 @@ class CaesarCipherTesting:
         key,
         assertion,
         output_results: bool = True,
-    ):
+    ) -> None:
         assert self.test_class.encrypt(text, key, output_results) == assertion
 
-    def test_decrypt(self, text, assertion, printResults: bool = False):
+    def test_decrypt(self,
+                     text,
+                     assertion,
+                     printResults: bool = False) -> None:
         assert self.test_class.decrypt(text, printResults) == assertion
 
 
-testCC = CaesarCipherTesting()
+testCC: CaesarCipherTesting = CaesarCipherTesting()
 
 
-def test_encodeA():
+def test_encodeA() -> None:
     testCC.test_encrypt('TESTING', 5, 'YJXYNSL')
 
 
-def test_encodeB():
+def test_encodeB() -> None:
     testCC.test_encrypt("TeStInG", 5, 'YjXyNsL', False)
 
 
-def test_encodeC():
+def test_encodeC() -> None:
     testCC.test_encrypt("Kk", 5, 'Pp', False)
 
 
-def test_encodeD():
+def test_encodeD() -> None:
     testCC.test_encrypt("Password", 5, 'Ufxxbtwi', False)
 
 
-def test_decodeA():
+def test_decodeA() -> None:
     testCC.test_decrypt('YJXYNSL', 'ZKYZOTM')
 
 
-def test_decodeB():
+def test_decodeB() -> None:
     testCC.test_decrypt('YjXyNsL', 'ZkYzOtM', False)
 
 
-def test_decodeC():
+def test_decodeC() -> None:
     testCC.test_decrypt('1djjktcqttccwprztsd', '6ekkludruuddxqsaute')
