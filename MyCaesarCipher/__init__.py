@@ -1,1 +1,1 @@
-from .mycaesarcipher import CaesarCipher
+from .main import CaesarCipher

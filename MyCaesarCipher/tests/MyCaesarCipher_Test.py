@@ -1,5 +1,5 @@
 from typing import Any
-from MyCaesarCipher.mycaesarcipher import CaesarCipher
+from MyCaesarCipher.main import CaesarCipher
 
 
 class CaesarCipherTesting:
