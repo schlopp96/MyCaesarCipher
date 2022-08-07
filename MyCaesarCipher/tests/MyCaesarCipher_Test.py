@@ -1,5 +1,5 @@
 from typing import Any
-from ..mycaesarcipher import CaesarCipher
+from MyCaesarCipher.mycaesarcipher import CaesarCipher
 
 
 class CaesarCipherTesting:
@@ -19,8 +19,8 @@ class CaesarCipherTesting:
     def test_decrypt(self,
                      text,
                      assertion,
-                     printResults: bool = False) -> None:
-        assert self.test_class.decrypt(text, printResults) == assertion
+                     output_results: bool = False) -> None:
+        assert self.test_class.decrypt(text, output_results) == assertion
 
 
 testCC: CaesarCipherTesting = CaesarCipherTesting()
@@ -51,4 +51,4 @@ def test_decodeB() -> None:
 
 
 def test_decodeC() -> None:
-    testCC.test_decrypt('1djjktcqttccwprztsd', '6ekkludruuddxqsaute')
+    testCC.test_decrypt('1djjktcqttccwprztsd', '2ekkludruuddxqsaute')

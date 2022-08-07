@@ -6,9 +6,9 @@
 
 ## About
 
-- The [Caesar Cipher](https://en.wikipedia.org/wiki/Caesar_cipher) is one of the most simple and well known encryption techniques.
+- The [Caesar Cipher](https://en.wikipedia.org/wiki/Caesar_cipher) is one of the most simple and well-known encryption techniques.
 
-  - Each letter in the plaintext entry is replaced by a letter some fixed number of positions down the alphabet.
+  - Each letter in the plaintext entry is replaced by a letter found a certain number of positions down the alphabet.
 
 - This project was created as an exercise while I was taking the ["Cracking Codes with Python"](https://inventwithpython.com/cracking/) course - which I _highly_ recommend for both beginners and experienced python programmers interested in cryptography!
 
@@ -41,9 +41,9 @@ pip install MyCaesarCipher
 
 > **_Not recommended._**
 
-1. Before use, navigate to intended installation location, and create a new directory.
+1. Before use, navigate to the intended installation location, and create a new directory.
 
-2. Either clone repository with the git client of your preference, or download and extract the source code `zip` archive from the ["releases"](https://github.com/schlopp96/MyCaesarCipher/releases) page, to the newly created directory.
+2. Either clone repository with the git client of your preference, or download and extract the source code `zip` archive from the ["[releases"](https://github.com/schlopp96/MyCaesarCipher/releases) page to the newly created directory.
 
 3. Install all dependencies for this package within said directory using:
 
@@ -51,7 +51,7 @@ pip install MyCaesarCipher
    pip install -r requirements.txt
    ```
 
-   - (Optional) move installation directory to **`"~Python/Libs/site_packages/"`** to be able to import this package to a Python program like any other importable package.
+   - (Optional) move the installation directory to **`"~Python/Libs/site_packages/"`** to be able to import this package to a Python environment like any other importable package.
 
 - Done!
 
@@ -170,9 +170,9 @@ pip install MyCaesarCipher
 
 - The **`CaesarCipher.decrypt`** method will return all possible shifted-key variations of the given encrypted message.
 
-- _Generally_, the most legible key output will be the correct decrypted message, assuming the encrypted message was legible to begin with.
+- _Generally_, the most legible key output will be the correct decrypted message, assuming the encrypted message was legible initially.
 
-- Regardless, the correct output MUST be one of the output values due to the limitations of the algorithm being tied to the length of the alphabet [26] and amount of possible numbers [0-9].
+- Regardless, the correct output **MUST** be one of the output values due to the limitations of the algorithm being tied to the length of the alphabet 26 and the number of possible integers [0-9].
 
 ---
 
