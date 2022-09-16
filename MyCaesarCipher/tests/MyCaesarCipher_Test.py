@@ -41,14 +41,8 @@ def test_encodeC() -> None:
 def test_encodeD() -> None:
     testCC.test_encrypt("Password", 5, 'Ufxxbtwi', False)
 
-
-def test_decodeA() -> None:
-    testCC.test_decrypt('YJXYNSL', 'ZKYZOTM')
-
-
-def test_decodeB() -> None:
-    testCC.test_decrypt('YjXyNsL', 'ZkYzOtM', False)
-
-
 def test_decodeC() -> None:
-    testCC.test_decrypt('1djjktcqttccwprztsd', '2ekkludruuddxqsaute')
+    testCC.test_decrypt(
+        '1djjktcqttccwprztsd',
+        '1djjktcqttccwprztsd0ciijsbpssbbvoqysrc9bhhiraorraaunpxrqb8agghqznqqzztmowqpa7zffgpymppyyslnvpoz6yeefoxlooxxrkmuony5xddenwknnwwqjltnmx4wccdmvjmmvvpiksmlw3vbbcluilluuohjrlkv2uaabkthkkttngiqkju1tzzajsgjjssmfhpjit0syyzirfiirrlegoihs9rxxyhqehhqqkdfnhgr8qwwxgpdggppjcemgfq7pvvwfocffooibdlfep6ouuvenbeennhackedo5nttudmaddmmgzbjdcn4msstclzccllfyaicbm3lrrsbkybbkkexzhbal2kqqrajxaajjdwygazk1jppqziwzziicvxfzyj0ioopyhvyyhhbuweyxi9hnnoxguxxggatvdxwh8gmmnwftwwffzsucwvg7fllmvesvveeyrtbvuf6ekkludruuddxqsaute'
+    )
