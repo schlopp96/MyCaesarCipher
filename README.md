@@ -75,12 +75,16 @@
     >>> msg = 'Test Cipher'
     >>> cipher.encrypt(text=msg, key=200, stdout_output=True)
 
+    ------------------------------------
+
     > Original Msg : Test Cipher
-      - Shift-Key : 200
-      - Encrypted Result: Lwkl Uahzwj
+
+    > Shift-Key : 200
+
+    > Encrypted Result: Lwkl Uahzwj
     ```
 
-- Therefore the final encrypted result of "Test Cipher" using a shift-key of 200 is:
+- Therefore the final encrypted result of "Test Cipher" using a shift key of 200 is:
 
   - "**`LwklfUahzwj`**".
 
@@ -89,21 +93,41 @@
   - ```python
     >>> cipher.encrypt('Test Cipher', stdout_output=True)
 
-    > Original Msg : Test Cipher
-      - Shift-key : 19
-      - Encrypted Result: Mxlm Vbiaxk
+    ------------------------------------
 
+    > Original Msg : Test Cipher
+
+    > Shift-key : 19
+
+    > Encrypted Result: Mxlm Vbiaxk
+    ```
+
+    ---
+
+  - ```python
     >>> cipher.encrypt('Test Cipher', stdout_output=True)
 
-    > Original Msg : Test Cipher
-      - Shift-key : 24
-      - Encrypted Result: Rcqr Agnfcp
+    ------------------------------------
 
+    > Original Msg : Test Cipher
+
+    > Shift-key : 24
+
+    > Encrypted Result: Rcqr Agnfcp
+    ```
+
+    ---
+
+  - ```python
     >>> cipher.encrypt('Test Cipher', stdout_output=True)
 
+    ------------------------------------
+
     > Original Msg : Test Cipher
-      - Shift-key : 4
-      - Encrypted Result: Xiwx Gmtliv
+
+    > Shift-key : 4
+
+    > Encrypted Result: Xiwx Gmtliv
     ```
 
 ---
@@ -116,10 +140,9 @@
     >>> from MyCaesarCipher import CaesarCipher
 
     >>> cipher = CaesarCipher() # Create new class instance.
-    >>> code = 'Ozno Xdkczm'
-    >>> decryption = cipher.decrypt(text=code, stdout_output=True)
+    >>> decryption = cipher.decrypt(text='Ozno Xdkczm', stdout_output=True)
 
-    >>> print(decryption)
+    ------------------------------------
 
     > Decrypted Shift-Key 0 : Ozno Xdkczm
 

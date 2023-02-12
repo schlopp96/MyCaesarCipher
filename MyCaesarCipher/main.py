@@ -25,6 +25,7 @@ class CaesarCipher:
 
         - Generates encrypted form of :param:`text` using the Caesar-Cipher algorithm.
         - If no :param:`key` is provided, a random integer value is generated.
+        - Optionally disable output of encrypted text results to stdout by toggling :param:`stdout_output` to `False`.
 
         ---
 
@@ -63,7 +64,7 @@ class CaesarCipher:
             else:
                 output += char
 
-        info: str = f'> Original Msg : {text}\n\n\t- Shift-key : {key}\n\n\t- Encrypted Result: {output}\n'
+        info: str = f'> Original Msg : {text}\n\n> Shift-key : {key}\n\n> Encrypted Result: {output}\n'
 
         if stdout_output:
             print(info)
@@ -74,7 +75,7 @@ class CaesarCipher:
     def decrypt(text: str, stdout_output: bool = True) -> dict[str, int]:
         """Decrypt Caesar-Cipher encrypted messages and return dictionary of all possible results.
 
-        - Optionally disable output of all decrypted text and corresponding shift-keys by toggling :param:`stdout_output` to `False`.
+        - Optionally disable output of decrypted text results and corresponding shift-keys to stdout by toggling :param:`stdout_output` to `False`.
 
         ---
 
