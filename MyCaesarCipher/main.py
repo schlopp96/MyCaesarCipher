@@ -117,9 +117,3 @@ class CaesarCipher:
             output[char_new] = output.get(char_new, (key - 1)) + 1
 
         return output
-
-
-cipher = CaesarCipher()  # Create new class instance.
-code = 'Ozno Xdkczm'
-decryption = cipher.decrypt(text=code, stdout_output=True)
-print(decryption)
