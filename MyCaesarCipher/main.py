@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from random import randint
+from typing import Optional
 
 
 class CaesarCipher:
@@ -17,90 +18,108 @@ class CaesarCipher:
     """
 
     @staticmethod
-    def encrypt(text: str, key: int = None, stdout_output: bool = True) -> str:
+    def encrypt(text: str,
+                key: Optional[int] = None,
+                stdout_output: bool = True) -> str:
         """Encrypt text using the Caesar-Cypher cryptography algorithm.
 
         - Generates encrypted form of :param:`text` using the Caesar-Cipher algorithm.
         - If no :param:`key` is provided, a random integer value is generated.
 
+        ---
+
         :param text: text to encrypt.
         :type text: :class:`str`
         :param key: numeric value used to encrypt the given text, defaults to `None`
-        :type key: :class:`int`, optional
+        :type key: :class:`Optional`[:class:`int`], optional
         :param stdout_output: toggle output to stdout, defaults to `True`
         :type stdout_output: :class:`bool`, optional
         :return: encrypted form of :param:`text`
         :rtype: :class:`str`
         """
 
-        result: str = ''
+        output: str = ''
 
+        #$ Create random key if none provided.
         if key is None:
             key = randint(1, 25)
 
         #@ Iterate through text char by char.
-        for character in text:
+        for char in text:
 
-            #@ Encrypt uppercase characters in text
-            if (character.isupper()):
-                result += chr((ord(character) + key - 65) % 26 + 65)
+            #@ Encrypt uppercase characters
+            if (char.isupper()):
+                output += chr((ord(char) + key - 65) % 26 + 65)
 
-            #@ Encrypt lowercase characters in text
-            elif (character.islower()):
-                result += chr((ord(character) + key - 97) % 26 + 97)
+            #@ Encrypt lowercase characters
+            elif (char.islower()):
+                output += chr((ord(char) + key - 97) % 26 + 97)
 
-            #@ Encrypt numbers in text
-            elif (character.isdigit()):
-                result += str((int(character) + key) % 10)
+            #@ Encrypt numbers
+            elif (char.isdigit()):
+                output += str((int(char) + key) % 10)
 
             #@ Leave all non-alphanumeric characters unchanged.
             else:
-                result += character
+                output += char
 
-        info: str = f'> Original Msg : {text}\n> Shift-key : {key}\n> Encrypted Result: {result}\n'
+        info: str = f'> Original Msg : {text}\n\n\t- Shift-key : {key}\n\n\t- Encrypted Result: {output}\n'
 
         if stdout_output:
             print(info)
 
-        return result
+        return output
 
     @staticmethod
-    def decrypt(text: str, stdout_output: bool = True):
-        """Decrypt Caesar-Cipher encrypted messages using brute force.
+    def decrypt(text: str, stdout_output: bool = True) -> dict[str, int]:
+        """Decrypt Caesar-Cipher encrypted messages and return dictionary of all possible results.
+
+        - Optionally disable output of all decrypted text and corresponding shift-keys by toggling :param:`stdout_output` to `False`.
 
         ---
 
-        :param text: text to decode.
+        :param text: text to be decrypted
         :type text: :class:`str`
-        :param stdout_output: toggle output to stdout, defaults to `True`.
+        :param stdout_output: toggle structured output of results to stdout, defaults to `True`
         :type stdout_output: :class:`bool`
-        :return: all possible pairs of shift-keys and their decrypted results.
-        :rtype: :class:`str`
+        :return: dictionary containing all possible pairs of shift-keys and their decrypted results
+        :rtype: :class:`dict[str, int]`
         """
 
-        translated = ''
+        output: dict = {}
 
-        #@ Outputs all possible shift-keys using the english alphabet.
+        #@ Output all possible shift-keys using the english alphabet
         for key in range(26):
 
-            for character in text:
+            char_new: str = ''
 
-                if (character.isupper()):
-                    translated += chr((ord(character) - key - 65) % 26 + 65)
+            for char in text:
+
+                if (char.isupper()):
+                    char_new += chr((ord(char) - key - 65) % 26 + 65)
 
                 #@ Decrypt lowercase characters in text
-                elif (character.islower()):
-                    translated += chr((ord(character) - key - 97) % 26 + 97)
+                elif (char.islower()):
+                    char_new += chr((ord(char) - key - 97) % 26 + 97)
 
                 #@ Decrypt numbers in text
-                elif (character.isdigit()):
-                    translated += str((int(character) - key) % 10)
+                elif (char.isdigit()):
+                    char_new += str((int(char) - key) % 10)
 
                 #@ Leave all non-alphanumeric characters unchanged.
                 else:
-                    translated += character
+                    char_new += char
 
             if stdout_output:
-                print(f'> Decrypted Shift-Key {key} : {translated}\n')
+                print(f'> Decrypted Shift-Key {key} : {char_new}\n')
 
-        return translated
+            #@ Add decrypted text and its corresponding shift-key to dictionary
+            output[char_new] = output.get(char_new, (key - 1)) + 1
+
+        return output
+
+
+cipher = CaesarCipher()  # Create new class instance.
+code = 'Ozno Xdkczm'
+decryption = cipher.decrypt(text=code, stdout_output=True)
+print(decryption)

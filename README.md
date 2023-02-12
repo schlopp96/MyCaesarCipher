@@ -8,7 +8,7 @@
 
 - The [Caesar Cipher](https://en.wikipedia.org/wiki/Caesar_cipher) is one of the most simple and well-known encryption techniques.
 
-  - Each letter in the plaintext entry is replaced by a letter found a certain number of positions down the alphabet.
+  - Each letter in the plaintext entry is replaced by a letter found at a certain number of positions down the alphabet.
 
 - This project was created as an exercise while I was taking the ["Cracking Codes with Python"](https://inventwithpython.com/cracking/) course - which I _highly_ recommend for both beginners and experienced python programmers interested in cryptography!
 
@@ -76,8 +76,8 @@
     >>> cipher.encrypt(text=msg, key=200, stdout_output=True)
 
     > Original Msg : Test Cipher
-    > Shift-Key : 200
-    > Encrypted Result: Lwkl Uahzwj
+      - Shift-Key : 200
+      - Encrypted Result: Lwkl Uahzwj
     ```
 
 - Therefore the final encrypted result of "Test Cipher" using a shift-key of 200 is:
@@ -90,20 +90,20 @@
     >>> cipher.encrypt('Test Cipher', stdout_output=True)
 
     > Original Msg : Test Cipher
-    > Shift-key : 19
-    > Encrypted Result: Mxlm Vbiaxk
+      - Shift-key : 19
+      - Encrypted Result: Mxlm Vbiaxk
 
     >>> cipher.encrypt('Test Cipher', stdout_output=True)
 
     > Original Msg : Test Cipher
-    > Shift-key : 24
-    > Encrypted Result: Rcqr Agnfcp
+      - Shift-key : 24
+      - Encrypted Result: Rcqr Agnfcp
 
     >>> cipher.encrypt('Test Cipher', stdout_output=True)
 
     > Original Msg : Test Cipher
-    > Shift-key : 4
-    > Encrypted Result: Xiwx Gmtliv
+      - Shift-key : 4
+      - Encrypted Result: Xiwx Gmtliv
     ```
 
 ---
@@ -117,7 +117,9 @@
 
     >>> cipher = CaesarCipher() # Create new class instance.
     >>> code = 'Ozno Xdkczm'
-    >>> cipher.decrypt(text=code, stdout_output=True)
+    >>> decryption = cipher.decrypt(text=code, stdout_output=True)
+
+    >>> print(decryption)
 
     > Decrypted Shift-Key 0 : Ozno Xdkczm
 
@@ -170,11 +172,13 @@
     > Decrypted Shift-Key 24 : Qbpq Zfmebo
 
     > Decrypted Shift-Key 25 : Paop Yeldan
+
+    {'Ozno Xdkczm': 0, 'Nymn Wcjbyl': 1, 'Mxlm Vbiaxk': 2, 'Lwkl Uahzwj': 3, 'Kvjk Tzgyvi': 4, 'Juij Syfxuh': 5, 'Ithi Rxewtg': 6, 'Hsgh Qwdvsf': 7, 'Grfg Pvcure': 8, 'Fqef Oubtqd': 9, 'Epde Ntaspc': 10, 'Docd Mszrob': 11, 'Cnbc Lryqna': 12, 'Bmab Kqxpmz': 13, 'Alza Jpwoly': 14, 'Zkyz Iovnkx': 15, 'Yjxy Hnumjw': 16, 'Xiwx Gmtliv': 17, 'Whvw Flskhu': 18, 'Vguv Ekrjgt': 19, 'Uftu Djqifs': 20, 'Test Cipher': 21, 'Sdrs Bhogdq': 22, 'Rcqr Agnfcp': 23, 'Qbpq Zfmebo': 24, 'Paop Yeldan': 25}
     ```
 
-- The **`CaesarCipher.decrypt`** method will return all possible shifted-key variations of the given encrypted message.
+- The **`CaesarCipher.decrypt`** method will return all possible shifted-key variations of the given encrypted message as a dictionary.
 
-- _Generally_, the most legible key output will be the correct decrypted message, assuming the encrypted message was legible initially.
+- **_Generally_**, the _most legible_ key output will be the correct decrypted message, assuming the encrypted message was legible initially.
 
 - Regardless, the correct output **MUST** be one of the output values due to the limitations of the algorithm being tied to the length of the alphabet 26 and the number of possible integers [0-9].
   - This is also the reason why the algorithm is not recommended for serious real-world cryptography use cases.
