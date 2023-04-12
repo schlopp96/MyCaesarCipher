@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 readme = pathlib.Path("readme.md").read_text()
 reqs = pathlib.Path("requirements.txt").read_text()
 setup(name="MyCaesarCipher",
-      version='0.4.0',
+      version='0.4.1',
       description=
       'Simple cryptographic substitution-based cipher for encoding plaintext.',
       url='https://github.com/schlopp96/MyCaesarCipher',
