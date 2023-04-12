@@ -3,9 +3,11 @@
 from random import randint
 from typing import Optional
 
+__version__ = '0.4.0'
+
 
 class CaesarCipher:
-    """Cryptographic encryption/decryption techniques using the Caesar-Cipher algorithm.
+    """Cryptographic encryption/decryption using the Caesar-Cipher algorithm.
 
     ---
 
@@ -21,7 +23,7 @@ class CaesarCipher:
     def encrypt(text: str,
                 key: Optional[int] = None,
                 stdout_output: bool = True) -> str:
-        """Encrypt text using the Caesar-Cypher cryptography algorithm.
+        """Encrypt text using the Caesar-Cipher cryptography algorithm.
 
         - Generates encrypted form of :param:`text` using the Caesar-Cipher algorithm.
         - If no :param:`key` is provided, a random integer value is generated.
@@ -64,7 +66,7 @@ class CaesarCipher:
             else:
                 output += char
 
-        info: str = f'> Original Msg : {text}\n\n> Shift-key : {key}\n\n> Encrypted Result: {output}\n'
+        info: str = f'> Original Txt : {text}\n\n> Shift-key : {key}\n\n> Encrypted Result: {output}\n'
 
         if stdout_output:
             print(info)

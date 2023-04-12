@@ -10,7 +10,7 @@
 
   - Each letter in the plaintext entry is replaced by a letter found at a certain number of positions down the alphabet.
 
-- This project was created as an exercise while I was taking the ["Cracking Codes with Python"](https://inventwithpython.com/cracking/) course - which I _highly_ recommend for both beginners and experienced python programmers interested in cryptography!
+- This project was created as an exercise while I was taking the ["Cracking Codes with Python"](https://inventwithpython.com/cracking/) course - which I _highly_ recommend for both beginners and experienced Python programmers interested in cryptography!
 
 ---
 
@@ -18,7 +18,8 @@
 
 ### Using pip _(Recommended)_
 
-> _Easiest_ method. _**Highly recommended over manual installation.**_
+> **_Easiest_ method.**
+> _Highly recommended over manual installation._
 
 - Run the following to install _**`MyCaesarCipher`**_ using `pip`:
 
@@ -26,7 +27,7 @@
     pip install MyCaesarCipher
     ```
 
-- You should now be able to import/run _**`MyCaesarCipher`**_ within your python environment by entering the following:
+- You should now be able to import/run _**`MyCaesarCipher`**_ within your Python environment by entering the following:
 
   - ```python
     >>> from MyCaesarCipher import CaesarCipher
@@ -39,14 +40,15 @@
 
 ### Manual Installation
 
-> _Not_ recommended. _**Only use this method if you are unable to use `pip`**_.
+> **_Not_ recommended.**
+> _Only use this method if you are unable to install using `pip`_.
 
 1. Before use, navigate to the intended installation location, and create a new directory.
 
 2. Please only do one of the following:
 
     - **A.** Clone repository with the git client of your preference.
-    - **B.** Download and extract the source code `zip` archive from the ["[releases"](https://github.com/schlopp96/MyCaesarCipher/releases) page to the newly created directory.
+    - **B.** Download and extract the source code `zip` archive from the ["releases"](https://github.com/schlopp96/MyCaesarCipher/releases) page to the newly created directory.
 
 3. Install all dependencies for this package within the installation directory using the following command:
 
@@ -64,7 +66,7 @@
 
 - Within a Python environment or **`.py`** project, simply import the _**`MyCaesarCipher`**_ module to start encryption/decryption of ciphers.
 
-### Message Encryption
+### Text Encryption
 
 - For encrypting text, use the **`CaesarCipher.encrypt`** class method:
 
@@ -72,21 +74,21 @@
     >>> from MyCaesarCipher import CaesarCipher
 
     >>> cipher = CaesarCipher() # Create new class instance.
-    >>> msg = 'Test Cipher'
-    >>> cipher.encrypt(text=msg, key=200, stdout_output=True)
+    >>> txt = 'Test Cipher'
+    >>> cipher.encrypt(text=txt, key=15, stdout_output=True)
 
     ------------------------------------
 
-    > Original Msg : Test Cipher
+    > Original Txt : Test Cipher
 
-    > Shift-Key : 200
+    > Shift-Key : 15
 
-    > Encrypted Result: Lwkl Uahzwj
+    > Encrypted Result: Ithi Rxewtg
     ```
 
-- Therefore the final encrypted result of "Test Cipher" using a shift key of 200 is:
+- Therefore the final encrypted result of "Test Cipher" using a shift key of 15 is:
 
-  - "**`LwklfUahzwj`**".
+  - "**`Ithi Rxewtg`**".
 
 - Note that the `key` parameter is _optional_, and if not provided, a random key between 1 and 25 will be generated:
 
@@ -95,7 +97,7 @@
 
     ------------------------------------
 
-    > Original Msg : Test Cipher
+    > Original Txt : Test Cipher
 
     > Shift-key : 19
 
@@ -109,7 +111,7 @@
 
     ------------------------------------
 
-    > Original Msg : Test Cipher
+    > Original Txt : Test Cipher
 
     > Shift-key : 24
 
@@ -123,7 +125,7 @@
 
     ------------------------------------
 
-    > Original Msg : Test Cipher
+    > Original Txt : Test Cipher
 
     > Shift-key : 4
 
@@ -132,7 +134,7 @@
 
 ---
 
-### Message Decryption
+### Text Decryption
 
 - For decrypting text, use the **`CaesarCipher.decrypt`** class method:
 
@@ -195,16 +197,19 @@
     > Decrypted Shift-Key 24 : Qbpq Zfmebo
 
     > Decrypted Shift-Key 25 : Paop Yeldan
+    ```
 
+- The **`CaesarCipher.decrypt`** method will return all possible shifted-key variations of the given encrypted text as a dictionary.
+  - This is NOT printed to stdout even if the `stdout_output` parameter is set to `True`.
+
+  - ```python
     {'Ozno Xdkczm': 0, 'Nymn Wcjbyl': 1, 'Mxlm Vbiaxk': 2, 'Lwkl Uahzwj': 3, 'Kvjk Tzgyvi': 4, 'Juij Syfxuh': 5, 'Ithi Rxewtg': 6, 'Hsgh Qwdvsf': 7, 'Grfg Pvcure': 8, 'Fqef Oubtqd': 9, 'Epde Ntaspc': 10, 'Docd Mszrob': 11, 'Cnbc Lryqna': 12, 'Bmab Kqxpmz': 13, 'Alza Jpwoly': 14, 'Zkyz Iovnkx': 15, 'Yjxy Hnumjw': 16, 'Xiwx Gmtliv': 17, 'Whvw Flskhu': 18, 'Vguv Ekrjgt': 19, 'Uftu Djqifs': 20, 'Test Cipher': 21, 'Sdrs Bhogdq': 22, 'Rcqr Agnfcp': 23, 'Qbpq Zfmebo': 24, 'Paop Yeldan': 25}
     ```
 
-- The **`CaesarCipher.decrypt`** method will return all possible shifted-key variations of the given encrypted message as a dictionary.
+- **_Generally_**, the _most legible_ key output will be the correct decrypted text (assuming the encrypted text was legible initially).
 
-- **_Generally_**, the _most legible_ key output will be the correct decrypted message, assuming the encrypted message was legible initially.
-
-- Regardless, the correct output **MUST** be one of the output values due to the limitations of the algorithm being tied to the length of the alphabet 26 and the number of possible integers [0-9].
-  - This is also the reason why the algorithm is not recommended for serious real-world cryptography use cases.
+- Regardless, the correct output **MUST** be one of the output values due to the limitations of the algorithm being tied to the length of the alphabet [26] and the number of possible integers [0-9].
+  - This is also the reason why the algorithm is not recommended for serious real-world cryptography use cases, as it is rather simple to decipher Caesar-Cipher encrypted text.
 
 ---
 
